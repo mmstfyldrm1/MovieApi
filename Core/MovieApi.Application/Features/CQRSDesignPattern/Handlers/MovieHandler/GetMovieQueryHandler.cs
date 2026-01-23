@@ -19,7 +19,7 @@ namespace MovieApi.Application.Features.CQRSDesignPattern.Handlers.MovieHandler
         }
 
 
-        public async Task<List<GetMovieQueryResult>> Handler(GetMovieQueryResult command)
+        public async Task<List<GetMovieQueryResult>> Handler()
         {
             var result = await _movieContext.Movies.ToListAsync();
             return result.Select(x => new GetMovieQueryResult

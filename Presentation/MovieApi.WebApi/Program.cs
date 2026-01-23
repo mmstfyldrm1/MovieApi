@@ -1,6 +1,25 @@
+using MovieApi.Application.Features.CQRSDesignPattern.Handlers.CategoryHandler;
+using MovieApi.Application.Features.CQRSDesignPattern.Handlers.MovieHandler;
+using MovieApi.Persistence.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<MovieContext>();
+builder.Services.AddScoped<CreateMovieCommandHandler>();
+builder.Services.AddScoped<UpdateMovieCommandHandler>();
+builder.Services.AddScoped<RemoveMovieCommandHandler>();
+builder.Services.AddScoped<GetMovieQueryHandler>();
+builder.Services.AddScoped<GetMovieByIdQueryHandler>();
+
+builder.Services.AddScoped<GetCategoryQueryHandler>();
+builder.Services.AddScoped<GetCategoriesByIdQueryHandler>();
+builder.Services.AddScoped<CreateCategoryCommandHandler>();
+builder.Services.AddScoped<UpdateCategoryCommandHandler>();
+builder.Services.AddScoped<RemoveCategoryCommandHandler>();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
