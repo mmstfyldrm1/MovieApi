@@ -1,6 +1,9 @@
 using MovieApi.Application.Features.CQRSDesignPattern.Handlers.CategoryHandler;
 using MovieApi.Application.Features.CQRSDesignPattern.Handlers.MovieHandler;
+using MovieApi.Application.Features.MediatorDesignPattern.Handlers.CastHandler;
+using MovieApi.Application.Features.MediatorDesignPattern.Handlers.TagHandler;
 using MovieApi.Persistence.Context;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,23 @@ builder.Services.AddScoped<GetCategoriesByIdQueryHandler>();
 builder.Services.AddScoped<CreateCategoryCommandHandler>();
 builder.Services.AddScoped<UpdateCategoryCommandHandler>();
 builder.Services.AddScoped<RemoveCategoryCommandHandler>();
+
+//builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(
+        typeof(GetTagQueryHandler).Assembly
+    );
+});
+
+builder.Services.AddMediatR(cfg =>
+{
+    cfg.RegisterServicesFromAssembly(
+        typeof(GetCastQueryHandler).Assembly
+    );
+});
+
 
 
 

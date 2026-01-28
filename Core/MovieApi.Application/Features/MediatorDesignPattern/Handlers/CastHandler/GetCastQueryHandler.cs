@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using MovieApi.Application.Features.MediatorDesignPattern.Queries;
+using MovieApi.Application.Features.MediatorDesignPattern.Queries.CastQueries;
 using MovieApi.Application.Features.MediatorDesignPattern.Results.CastResults;
 using MovieApi.Persistence.Context;
 using System;
