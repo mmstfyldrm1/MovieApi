@@ -32,6 +32,7 @@ namespace MovieApi.Application.Features.CQRSDesignPattern.Handlers.MovieHandler
                 ReleaseDate = x.ReleaseDate,
                 Status = x.Status,
                 Title = x.Title,
+                MovieId = x.MovieId,
 
             }).ToList();
 
